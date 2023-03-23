@@ -1,0 +1,54 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: oteld
+spec:
+  mode: daemonset
+  hostNetwork: true
+  serviceAccount: otelcontribcol
+  image: otel/opentelemetry-collector-contrib:0.46.0
+  env:
+    - name: K8S_NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+
+    processors:
+      batch:
+        send_batch_max_size: 1000
+        timeout: 30s
+        send_batch_size : 800
+
+
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 70
+        spike_limit_percentage: 30
+
+
+    exporters:
+      logging:
+        loglevel: debug
+
+      otlphttp:
+        endpoint: DT_TENANT_URL/api/v2/otlp
+        headers:
+          Authorization: "Api-Token DT_TOKEN"
+
+
+      prometheus:
+        endpoint: "0.0.0.0:9090"
+        namespace: default
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [logging]

@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: featureflag-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host :  "qlkube.IP_TO_REPLACE.nip.io"
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/"
+            backend:
+              service:
+                name: qlkube
+                port:
+                  number: 80
