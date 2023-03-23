@@ -8,12 +8,11 @@ In this lab you'll learn how to :
 
 ### Step 1: Update the collector Pipeline
  A. Look at  the OpenTelemetryCollector template
-   In the Bastion host, go to o the folder : `exercise/02_collector/metrics`
+   Go to o the folder : `exercise/02_collector/metrics`
     
    ```bash
-   (bastion)$ cd ~/HOT_DAY_SCRIPT
-   (bastion)$ cd exercise/02_collector/metrics`
-   (bastion)$ cat openTelemetry-manifest.yaml
+   cd exercise/02_collector/metrics`
+   cat openTelemetry-manifest.yaml
    ```
 
  B. Add a metricstransform processor 
@@ -28,7 +27,7 @@ In this lab you'll learn how to :
    Update the `openTelemetry-manifest.yaml` by adding the following processor :
     
    ```bash
-   (bastion)$ vi openTelemetry-manifest.yaml
+   vi openTelemetry-manifest.yaml
    ```
    add the following processor 
     
@@ -53,7 +52,7 @@ C. Add a metric pipeline
    * process with `memory_limiter`, `k8sattributes` , `metricstransform` , `batch`
    * exporter: `prometheus`
    
-   ![metric pipeline 01](../../../assets/images/metric_pipeline.png)
+   ![metric pipeline 01](../../image/metric_pipeline.png)
      
 D. Replace the prometheus exporter with the dynatrace exporter
 

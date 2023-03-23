@@ -13,28 +13,27 @@ In this module you will go through the following actions:
 
 1. Go to the folder of the exercice :
 
-   In the Bastion host, go to o the folder : `exercise/03_auto-instrumentation`
+   Go to o the folder : `exercise/03_auto-instrumentation`
    
    ```bash
-   (bastion)$ cd ~/HOT_DAY_SCRIPT
-   (bastion)$ cd exercise/03_auto-instrumentation`
+   cd exercise/03_auto-instrumentation`
    ```
 
 
 3. Deploy the OpenTelemetry Sidecar Collector
    
    ```bash
-   (bastion)$ kubectl apply -f openTelemetry-sidecar.yaml -n hipster-shop
+   kubectl apply -f openTelemetry-sidecar.yaml -n hipster-shop
    ```
    
 4. Look at the Instrumentation object
    ```bash
-   (bastion)$ cat instrumentation.yaml
+   cat instrumentation.yaml
    ```
    
 5. Deploy the instrumentation object
    ```bash
-   (bastion)$ kubectl apply -f  instrumentation.yaml -n hipster-shop
+   kubectl apply -f  instrumentation.yaml -n hipster-shop
    ```
 
 ### Step 2 : Configure the Deployment file
@@ -53,7 +52,7 @@ In this module you will go through the following actions:
 2. Deploy the application
 
    ```bash
-   (bastion)$ kubectl apply -f  k8Sdemo-nootel.yaml -n hipster-shop
+   kubectl apply -f  k8Sdemo-nootel.yaml -n hipster-shop
    ```
 
 ### Step 3 : Look at the generated traces

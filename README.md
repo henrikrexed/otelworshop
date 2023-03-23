@@ -70,7 +70,7 @@ The instrumentation example will use the code build in :
 - qlkube/src/instrumentation.js
 - qlkube/src/index.js
 
-for more information about qlkube, check the [documentate](qlkube/qlkube.md)
+for more information about qlkube, check the [documentation](qlkube/qlkube.md)
 
 ### 6. THe openTelemetry Collector
 

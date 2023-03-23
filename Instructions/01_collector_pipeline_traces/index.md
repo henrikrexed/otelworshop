@@ -9,17 +9,16 @@ In this lab you'll learn how to :
 
 A. Look at  the OpenTelemtryCollector template
 
-In the Bastion host, go to the folder : `exercise/02_collector/trace`
+go to the folder : `exercise/02_collector/trace`
    ```bash
-   (bastion)$ cd ~/HOT_DAY_SCRIPT
-   (bastion)$ cd exercise/02_collector/trace
-   (bastion)$ cat openTelemetry-manifest.yaml
+   cd exercise/02_collector/trace
+   cat openTelemetry-manifest.yaml
    ```
 This collector is currently receiving traces and exporting it directly to the logging exporter.
 
 B. Deploy the OpenTelemetryCollector 
    ```bash
-   (bastion)$ kubectl apply -f openTelemetry-manifest.yaml
+    kubectl apply -f openTelemetry-manifest.yaml
    ```
    This will deploy OpenTelemtry Collector in a daemon set mode.
    
@@ -29,7 +28,7 @@ C. Look at the produced logs
    kubectl get pods 
    ```
    you should have one pod running with our collector :
-   ![Pod 01](../../../assets/images/pod01.png)
+   ![Pod 01](../../image/pod01.png)
 
    Copy the pod name of the collector , and display the logs :
 
@@ -45,7 +44,7 @@ A. Edit the OpenTelemetryCollector object
       - start with the `memory_limiter`
       - end with the `batch` processor 
    ```bash
-   (bastion)$ vi openTelemetry-manifest.yaml
+   vi openTelemetry-manifest.yaml
    ```
    ![Pod 01](../../../assets/images/processor_flow.png)
    
@@ -70,7 +69,7 @@ Here is the link to documentation of the [k8sattributes processor](https://pkg.g
    Edit the `openTelemetry-manifest.yaml`, by adding the right defintion of processor
    
    ```bash
-   (bastion)$ vi openTelemetry-manifest.yaml
+   vi openTelemetry-manifest.yaml
    ```
 
    Add this under processors in the YAML file:
@@ -99,14 +98,14 @@ C. Change the Processor flow
    Apply the change made on the collector :
     
    ```bash
-   (bastion)$ kubectl apply -f openTelemetry-manifest.yaml
+   kubectl apply -f openTelemetry-manifest.yaml
    ```
    
 D. Look at the logs of the collector to see the updated format of the spans
    Get the new Pod name of the collector and look a the logs :
 
    ```bash
-   (bastion)$ kubectl logs  <Collector pod name>
+   kubectl logs  <Collector pod name>
    ```
 
 ### Step 3. Export the generated spans to Dynatrace
@@ -117,11 +116,11 @@ A. Update the current trace pipeline
       - Dynatrace OpenTelemtry Trace ingest API
 
    ```bash
-   (bastion)$ vi openTelemetry-manifest.yaml
+   $ vi openTelemetry-manifest.yaml
    ```
    
    expected flow :
-   ![exporter 01](../../../assets/images/exporter_flow.png)
+   ![exporter 01](../../image/exporter_flow.png)
    
 B. Look at the generated traces in Dynatrace
    Open your Dynatrace tenant :
@@ -131,7 +130,7 @@ B. Look at the generated traces in Dynatrace
 
 C. Add all span attributes not stored by Dynatrace
    Look at each generated span, add all span attributes detected but not stored by dynatrace.
-   ![spanattribute 01](../../../assets/images/span_attribute.png)
+   ![spanattribute 01](../../image/span_attribute.png)
    
 D. Look at the Service Screen
    In your Dynatrace tenant: 
@@ -144,20 +143,20 @@ D. Look at the Service Screen
    Get the new service montoring name of the Collector
    
    ```bash
-    (bastion)$ kubectl get svc
+    kubectl get svc
    ```
-   ![collector 01](../../../assets/images/collector_metrics.png)
+   ![collector 01](../../image/collector_metrics.png)
    
    Expose the port 8088 locally on the bastion host :
    
    ```bash
-   (bastion)$ kubectl port-forward svc/<collector monitoring service name> 8088:8888
+   kubectl port-forward svc/<collector monitoring service name> 8088:8888
    ```
 
    Open another terminal and connect to the bastion host.
    Look at the metrics by send http request to `http://localhost:8088/metrics`
    
    ```bash
-   (bastion)$ curl http://localhost:8088/metrics
+   curl http://localhost:8088/metrics
    ```
    
