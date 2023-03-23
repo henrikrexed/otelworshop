@@ -61,7 +61,7 @@ cd otelworshop
 The application will deploy the otel demo v1.3.1
 ```shell
 chmod 777 deployment.sh
-./deployment.sh  --clustername "${NAME}" --dturl "${DT_TENANT_URL}" --dttoken "${DATA_INGEST_TOKEN}"
+./deployment.sh  --clustername "${NAME}" --environment-url "${DT_TENANT_URL}" --api-token "${DATA_INGEST_TOKEN}"
 ```
 
 ### 5. Instrumentation

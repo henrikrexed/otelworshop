@@ -63,10 +63,6 @@ if [ -z "$API_TOKEN" ]; then
 fi
 
 
-
-
-
-
 VERSION=1.3.1
 
 ###### DEploy Nginx
