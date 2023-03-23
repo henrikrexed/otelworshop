@@ -81,7 +81,7 @@ Go to the instruction located in the [following page](Instructions/01_collector_
 ####  pipeline
 Go to the instruction located in the [following page](Instructions/02_collector_pipeline_metrics/index.md)
 
-### 7. THe openTelemetry Operator
+### 7. The openTelemetry Operator
 
 Go to the instruction located in the [following page](Instructions/03_Auto_Instrumentation/index.md)
 

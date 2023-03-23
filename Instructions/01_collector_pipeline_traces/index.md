@@ -46,7 +46,7 @@ A. Edit the OpenTelemetryCollector object
    ```bash
    vi openTelemetry-manifest.yaml
    ```
-   ![Pod 01](../../../assets/images/processor_flow.png)
+   ![Pod 01](../../image/processor_flow.png)
    
 B. Add k8s attributes 
    Adding k8s attributes to the generated traces , means using the processor `k8sattributes`.
