@@ -106,8 +106,8 @@ sed -i "s,CLUSTER_ID_TOREPLACE,$CLUSTERID," kubernetes-manifests/openTelemetry-s
 sed -i "s,CLUSTER_ID_TOREPLACE,$CLUSTERID," exercise/03_auto-instrumentation/openTelemetry-sidecar.yaml
 sed -i "s,CLUSTER_NAME_TO_REPLACE,$CLUSTER_NAME," kubernetes-manifests/openTelemetry-sidecar.yaml
 sed -i "s,CLUSTER_NAME_TO_REPLACE,$CLUSTER_NAME," exercise/03_auto-instrumentation/openTelemetry-sidecar.yaml
-sed -i "s,CLUSTER_NAME_TO_REPLACE,$CLUSTER_NAME," qlkube/deployments//openTelemetry-sidecar.yaml
-sed -i "s,CLUSTER_ID_TOREPLACE,$CLUSTERID," qlkube/deployments//openTelemetry-sidecar.yaml
+sed -i "s,CLUSTER_NAME_TO_REPLACE,$CLUSTER_NAME," qlkube/deployments/openTelemetry-sidecar.yaml
+sed -i "s,CLUSTER_ID_TOREPLACE,$CLUSTERID," qlkube/deployments/openTelemetry-sidecar.yaml
 #wait for the opentelemtry operator webhook to start
 
 # Deploy the opentelemetry operator
@@ -127,8 +127,7 @@ kubectl apply -f kubernetes-manifests/openTelemetry-manifest.yaml
 #manage the hipster-shop namespace
 echo "Deploying application"
 kubectl create ns hipster-shop
-sed -i "s,TENANT_TO_REPLACE,$ENVIRONMENT_URL," exercise/03_auto-instrumentation/k8Sdemo-nootel.yaml
-sed -i "s,API_TOKEN_TO_REPLACE,$API_TOKEN," exercise/03_auto-instrumentation/k8Sdemo-nootel.yaml
+
 #Deploy qlkube
 kubectl create ns qlkube
 kubectl apply -f kubernetes-manifests/openTelemetry-sidecar.yaml -n qlkube
