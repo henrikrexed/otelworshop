@@ -26,7 +26,7 @@ gcloud services enable monitoring.googleapis.com \
 ### 2.Create a GKE cluster
 ```shell
 ZONE=europe-west3-a
-NAME=otelinpractice-qlkube
+NAME=otelworkshop
 gcloud container clusters create "${NAME}" \
  --zone ${ZONE} --machine-type=e2-standard-2 --num-nodes=3
 ```
